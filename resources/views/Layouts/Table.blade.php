@@ -15,10 +15,10 @@
                 <td>{{ $Task->Project->name }}</td>
                 <td>{{ $Task->description }}</td>
                 <td class="d-flex">
-                    <a href="{{ route('edit', ['task' => $Task->id]) }}" class="btn btn-sm btn-default mx-2">
+                    <a href="{{-- route('edit', ['task' => $Task->id]) --}}" class="btn btn-sm btn-default mx-2">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </a>
-                    <form action="{{ route('destroy', ['task' => $Task->id]) }}" method="post">
+                    <form action="{{-- route('destroy', ['task' => $Task->id]) --}}" method="post">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-sm btn-danger">
