@@ -85,7 +85,7 @@
     <script src={{ asset('dist/js/pages/dashboard.js') }}></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
+    {{--
     <script>
         $(document).ready(function() {
             $(document).on('keyup', '#table_search', function(e) {
@@ -111,7 +111,7 @@
                 });
             });
         });
-    </script>
+    </script> --}}
 
 </body>
 
