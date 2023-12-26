@@ -40,7 +40,7 @@
 
         @include('Layouts.Navbar')
 
-        @include('Layouts.SideBar')
+        @include('Layouts.Sidebar')
         <div class="content-wrapper" style="min-height: 1302.4px;">
             @yield('content')
         </div>
