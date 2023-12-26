@@ -9,7 +9,7 @@
     </thead>
     <tbody>
 
-        {{-- @foreach ($Tasks as $Task)
+        @foreach ($Tasks as $Task)
             <tr>
                 <td>{{ $Task->name }}</td>
                 <td>{{ $Task->Project->name }}</td>
@@ -27,7 +27,7 @@
                     </form>
                 </td>
             </tr>
-        @endforeach --}}
+        @endforeach
 
     </tbody>
 </table>
