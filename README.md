@@ -69,3 +69,8 @@ php artisan make:view Layouts.Sidebar
 php artisan make:view Layouts.Error404
 
 ```
+
+
+```bash
+php artisan make:request FormTaskRequest
+```
