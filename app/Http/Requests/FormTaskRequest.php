@@ -23,7 +23,7 @@ class FormTaskRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:2|max:50',
-            'description' => '',
+            'description' => 'nullable',
             'project_id' => 'required'
         ];
     }

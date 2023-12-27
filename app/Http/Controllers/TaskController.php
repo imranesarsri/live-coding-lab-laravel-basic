@@ -33,34 +33,29 @@ class TaskController extends Controller
      */
     public function store(FormTaskRequest $request)
     {
-        // dd($request);
+        // dd($request->validated());
         Task::create($request->validated());
         return redirect('/')->with('success', 'Tâche créée avec succès !');
 
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Task $task)
     {
-        //
+        $Projects = Project::all();
+
+        return view('Tasks.edit', compact('task', 'Projects'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(FormTaskRequest $request, Task $task)
     {
-        //
+        $task->update($request->validated());
+        return redirect('/')->with('success', 'Tâche update avec succès !');
     }
 
     /**
