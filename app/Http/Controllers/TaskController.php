@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Task;
+use App\Models\Project;
 
 class TaskController extends Controller
 {
@@ -13,7 +14,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $Tasks = Task::all();
+        $Tasks = Task::with('project')->paginate(4);
         return view('Tasks.index', compact('Tasks'));
     }
 
