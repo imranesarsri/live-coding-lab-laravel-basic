@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="float-sm-right">
-                        <a href="route('create')" class="btn btn-sm btn-primary">Ajouter tâche</a>
+                        <a href="{{ route('create') }}" class="btn btn-sm btn-primary">Ajouter tâche</a>
                     </div>
                 </div>
             </div>
@@ -50,8 +50,7 @@
                             </div>
                             <div class="d-flex justify-content-end align-items-center p-2">
                                 <div class="pagination  m-0 float-right">
-                                    {{ $Tasks->links() }}
-                                </div>
+                                    {{ $Tasks->links() }} </div>
                             </div>
                         </div>
                     </div>

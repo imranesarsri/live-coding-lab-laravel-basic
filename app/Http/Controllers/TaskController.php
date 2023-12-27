@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\Project;
+use App\Http\Requests\FormTaskRequest;
 
 class TaskController extends Controller
 {
@@ -23,15 +24,19 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        $Projects = Project::all();
+        return view('Tasks.create', compact('Projects'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FormTaskRequest $request)
     {
-        //
+        // dd($request);
+        Task::create($request->validated());
+        return redirect('/')->with('success', 'Tâche créée avec succès !');
+
     }
 
     /**
