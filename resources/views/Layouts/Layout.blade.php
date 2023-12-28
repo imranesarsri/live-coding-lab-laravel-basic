@@ -89,51 +89,102 @@
 
     <script>
         $(document).ready(function() {
-            function fetchData(page, searchTaskValue, selectProjrctValue) {
+            function fetchData(page, searchTaskValue) {
                 $.ajax({
-                    url: '/?page=' + page + '&searchTaskValue=' + searchTaskValue + '&selectProjrctValue=' +
-                        selectProjrctValue,
+                    url: '/?page=' + page + '&searchTaskValue=' + searchTaskValue,
                     success: function(data) {
                         $('tbody').html('');
                         $('tbody').html(data);
                         // console.log(data);
                     }
                 });
+                console.log(page);
                 console.log(searchTaskValue);
-                console.log(page);
-                console.log(page);
+                // console.log(selectProjrctValue);
             }
 
             $('body').on('click', '.pagination a', function(e) {
 
                 e.preventDefault();
 
-                var page = $(this).attr('href').split('page=')[1];
-                var searchTaskValue = $('#search-input').val();
-                var selectProjrctValue = $('#filterSelectProjrctValue').val();
+                let page = $(this).attr('href').split('page=')[1];
+                let searchTaskValue = $('#search-input').val();
+                // let selectProjrctValue = $('#filterSelectProjrctValue').val();
                 // console.log($(this).attr('href').split('page=')[1]);
                 // console.log($(this).attr('href'));
-                fetchData(page, searchTaskValue, selectProjrctValue);
+                fetchData(page, searchTaskValue);
 
             });
 
             $('body').on('keyup', '#search-input', function() {
-                var page = $('#page').val();
-                var searchTaskValue = $('#search-input').val();
-                var selectProjrctValue = $('#filterSelectProjrctValue').val();
+                let page = $('#page').val();
+                let searchTaskValue = $('#search-input').val();
+                // let selectProjrctValue = $('#filterSelectProjrctValue').val();
 
-                fetchData(page, searchTaskValue, selectProjrctValue);
+                fetchData(page, searchTaskValue);
             });
 
-            $('#filterSelectProjrctValue').on('change', function() {
-                var page = $('#page').val();
-                var searchTaskValue = $('#search-input').val();
-                var selectProjrctValue = $(this).val();
-                fetchData(page, searchTaskValue, selectProjrctValue);
-            });
+            // $('#filterSelectProjrctValue').on('change', function() {
+            //     let page = $('#page').val();
+            //     let searchTaskValue = $('#search-input').val();
+            //     let selectProjrctValue = $(this).val();
+            //     fetchData(page, searchTaskValue, selectProjrctValue);
+            // });
 
         });
     </script>
+
+
+
+    {{--
+
+<script>
+    $(document).ready(function() {
+        function fetchData(page, searchTaskValue, selectProjrctValue) {
+            $.ajax({
+                url: '/?page=' + page + '&searchTaskValue=' + searchTaskValue + '&selectProjrctValue=' +
+                    selectProjrctValue,
+                success: function(data) {
+                    $('tbody').html('');
+                    $('tbody').html(data);
+                    // console.log(data);
+                }
+            });
+            console.log(page);
+            console.log(searchTaskValue);
+            console.log(selectProjrctValue);
+        }
+
+        $('body').on('click', '.pagination a', function(e) {
+
+            e.preventDefault();
+
+            let page = $(this).attr('href').split('page=')[1];
+            let searchTaskValue = $('#search-input').val();
+            let selectProjrctValue = $('#filterSelectProjrctValue').val();
+            // console.log($(this).attr('href').split('page=')[1]);
+            // console.log($(this).attr('href'));
+            fetchData(page, searchTaskValue, selectProjrctValue);
+
+        });
+
+        $('body').on('keyup', '#search-input', function() {
+            let page = $('#page').val();
+            let searchTaskValue = $('#search-input').val();
+            let selectProjrctValue = $('#filterSelectProjrctValue').val();
+
+            fetchData(page, searchTaskValue, selectProjrctValue);
+        });
+
+        $('#filterSelectProjrctValue').on('change', function() {
+            let page = $('#page').val();
+            let searchTaskValue = $('#search-input').val();
+            let selectProjrctValue = $(this).val();
+            fetchData(page, searchTaskValue, selectProjrctValue);
+        });
+
+    });
+</script> --}}
 
 </body>
 
