@@ -22,25 +22,23 @@ class TaskController extends Controller
 
         if ($request->ajax()) {
             $query = Task::query();
-            $search = $request->get('searchTaskValue');
-
-            // $Filter = $request->get('selectProjrctValue');
-            $search = str_replace(' ', '%', $search);
-
-            // if ($search && $Filter !== 'Filtrer par projet') {
-            //     $query->where('name', 'like', '%' . $search . '%')->where('project_id', $Filter)->paginate(3);
-            // }
+            $Search = $request->get('searchTaskValue');
+            $Filter = $request->get('selectProjrctValue');
+            $Search = str_replace(' ', '%', $Search);
 
             // pagination
-            if (empty($search)) {
-                // $Tasks = Task::with('project')->paginate(4);
+            if (empty($Search) && $Filter === "Filtrer par projet") {
                 return view('Tasks.Search', compact('Tasks', 'Projects'));
             }
-            if ($search) {
-                $Tasks = $query->with('project')->where('name', 'like', '%' . $search . '%')->paginate(4);
+            // search
+            if ($Search) {
+                $Tasks = $query->with('project')->where('name', 'like', '%' . $Search . '%')->paginate(4);
+            }
+            // filter
+            if ($Filter !== "Filtrer par projet") {
+                $Tasks = $query->where('project_id', $Filter)->paginate(3);
             }
             return view('Tasks.Search', compact('Tasks', 'Projects'))->render();
-
         }
 
         return view('Tasks.index', compact('Tasks', 'Projects'));

@@ -34,7 +34,7 @@
                             {{-- filter --}}
                             <div class="row d-flex justify-content-between">
                                 <div class="col-4">
-                                    {{-- <div class="input-group">
+                                    <div class="input-group">
                                         <label class="input-group-text" for="filterSelectProjrctValue"><i
                                                 class="fas fa-filter"></i></label>
                                         <select class="form-select form-control" id="filterSelectProjrctValue"
@@ -46,7 +46,7 @@
                                                 </option>
                                             @endforeach
                                         </select>
-                                    </div> --}}
+                                    </div>
                                 </div>
                                 <div class="input-group col-md-3">
                                     <input type="text" class="form-control" placeholder="Recherche"
