@@ -85,33 +85,55 @@
     <script src={{ asset('dist/js/pages/dashboard.js') }}></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    {{--
+
+
     <script>
         $(document).ready(function() {
-            $(document).on('keyup', '#table_search', function(e) {
-                e.preventDefault();
-                // let project = document.getElementById('project').value;
-                let search = $(this).val();
-                console.log(search);
-                let page = $('.pagination').find('.active').text(); // Get the current active page
+            function fetchData(page, searchTaskValue, selectProjrctValue) {
                 $.ajax({
-                    url: "{{ route('search') }}",
-                    method: 'GET',
-                    data: {
-                        search: search,
-                        // project: project,
-                    },
+                    url: '/?page=' + page + '&searchTaskValue=' + searchTaskValue + '&selectProjrctValue=' +
+                        selectProjrctValue,
                     success: function(data) {
-                        $('.table-tasks').html(data.table);
-                        $('.pagination').html(data.pagination);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
+                        $('tbody').html('');
+                        $('tbody').html(data);
+                        // console.log(data);
                     }
                 });
+                console.log(searchTaskValue);
+                console.log(page);
+                console.log(page);
+            }
+
+            $('body').on('click', '.pagination a', function(e) {
+
+                e.preventDefault();
+
+                var page = $(this).attr('href').split('page=')[1];
+                var searchTaskValue = $('#search-input').val();
+                var selectProjrctValue = $('#filterSelectProjrctValue').val();
+                // console.log($(this).attr('href').split('page=')[1]);
+                // console.log($(this).attr('href'));
+                fetchData(page, searchTaskValue, selectProjrctValue);
+
             });
+
+            $('body').on('keyup', '#search-input', function() {
+                var page = $('#page').val();
+                var searchTaskValue = $('#search-input').val();
+                var selectProjrctValue = $('#filterSelectProjrctValue').val();
+
+                fetchData(page, searchTaskValue, selectProjrctValue);
+            });
+
+            $('#filterSelectProjrctValue').on('change', function() {
+                var page = $('#page').val();
+                var searchTaskValue = $('#search-input').val();
+                var selectProjrctValue = $(this).val();
+                fetchData(page, searchTaskValue, selectProjrctValue);
+            });
+
         });
-    </script> --}}
+    </script>
 
 </body>
 

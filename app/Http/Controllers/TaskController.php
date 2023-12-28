@@ -13,10 +13,34 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $Tasks = Task::with('project')->paginate(4);
-        return view('Tasks.index', compact('Tasks'));
+
+        $Projects = Project::all();
+        if ($request->ajax()) {
+            $query = Task::query();
+            $Seach = $request->get('searchTaskValue');
+            $Filter = $request->get('selectProjrctValue');
+            $Seach = str_replace(' ', '%', $Seach);
+            // if ($Seach && $Filter) {
+            //     $Tasks = $query->with('project')->where('name', 'like', '%' . $Seach . '%')->orWhere('project_id', $Filter)->paginate(2);
+            // }
+            if ($Seach) {
+                $Tasks = $query->with('project')->where('name', 'like', '%' . $Seach . '%')->orWhere('description', 'like', '%' . $Seach . '%')->paginate(3);
+            }
+            if ($Filter) {
+                $Tasks = $query->with('project')->where('project_id', $Filter)->with('project')->paginate(3);
+            }
+
+            // $Tasks = Task::with('project')->paginate(4);
+            return view('Tasks.Search', compact('Tasks', 'Projects'))->render();
+
+        }
+
+        $Tasks = Task::with('project')->paginate(3);
+        return view('Tasks.index', compact('Tasks', 'Projects'));
+
+
     }
 
     /**
@@ -54,6 +78,7 @@ class TaskController extends Controller
      */
     public function update(FormTaskRequest $request, Task $task)
     {
+        // dd($task);
         $task->update($request->validated());
         return redirect('/')->with('success', 'Tâche update avec succès !');
     }
