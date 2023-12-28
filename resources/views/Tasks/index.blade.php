@@ -39,6 +39,7 @@
                                                 class="fas fa-filter"></i></label>
                                         <select class="form-select form-control" id="filterSelectProjrctValue"
                                             aria-label="Filter Select">
+                                            <option value="Filtrer par projet">Filtrer par projet</option>
                                             @foreach ($Projects as $Project)
                                                 <option value="{{ $Project->id }}" name="{{ $Project->id }}">
                                                     {{ $Project->name }}

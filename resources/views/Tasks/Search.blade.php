@@ -22,11 +22,9 @@
     <td></td>
     <td></td>
     <td>
-        {{-- <div class=" card-footer d-flex justify-content-end align-items-center p-2"> --}}
         <div class="pagination m-0 float-right">
             {{ $Tasks->links() }}
         </div>
-        {{-- </div> --}}
 
     </td>
 </tr>

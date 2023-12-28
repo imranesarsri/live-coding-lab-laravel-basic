@@ -17,19 +17,22 @@ class TaskController extends Controller
     {
 
         $Projects = Project::all();
+
+
         if ($request->ajax()) {
             $query = Task::query();
             $Seach = $request->get('searchTaskValue');
             $Filter = $request->get('selectProjrctValue');
             $Seach = str_replace(' ', '%', $Seach);
-            // if ($Seach && $Filter) {
-            //     $Tasks = $query->with('project')->where('name', 'like', '%' . $Seach . '%')->orWhere('project_id', $Filter)->paginate(2);
+
+            // if ($Seach && $Filter !== 'Filtrer par projet') {
+            //     $query->where('name', 'like', '%' . $Seach . '%')->where('project_id', $Filter)->paginate(3);
             // }
             if ($Seach) {
-                $Tasks = $query->with('project')->where('name', 'like', '%' . $Seach . '%')->orWhere('description', 'like', '%' . $Seach . '%')->paginate(3);
+                $Tasks = $query->with('project')->where('name', 'like', '%' . $Seach . '%')->paginate(3);
             }
             if ($Filter) {
-                $Tasks = $query->with('project')->where('project_id', $Filter)->with('project')->paginate(3);
+                $Tasks = $query->with('project')->where('project_id', $Filter)->paginate(3);
             }
 
             // $Tasks = Task::with('project')->paginate(4);
@@ -37,7 +40,7 @@ class TaskController extends Controller
 
         }
 
-        $Tasks = Task::with('project')->paginate(3);
+        $Tasks = Task::with('project')->paginate(5);
         return view('Tasks.index', compact('Tasks', 'Projects'));
 
 
