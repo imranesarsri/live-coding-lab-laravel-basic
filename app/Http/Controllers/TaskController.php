@@ -18,10 +18,12 @@ class TaskController extends Controller
 
         $Projects = Project::all();
 
+        $Tasks = Task::with('project')->paginate(4);
 
         if ($request->ajax()) {
             $query = Task::query();
             $search = $request->get('searchTaskValue');
+
             // $Filter = $request->get('selectProjrctValue');
             $search = str_replace(' ', '%', $search);
 
@@ -29,8 +31,9 @@ class TaskController extends Controller
             //     $query->where('name', 'like', '%' . $search . '%')->where('project_id', $Filter)->paginate(3);
             // }
 
+            // pagination
             if (empty($search)) {
-                $Tasks = Task::with('project')->paginate(4);
+                // $Tasks = Task::with('project')->paginate(4);
                 return view('Tasks.Search', compact('Tasks', 'Projects'));
             }
             if ($search) {
@@ -40,7 +43,6 @@ class TaskController extends Controller
 
         }
 
-        $Tasks = Task::with('project')->paginate(4);
         return view('Tasks.index', compact('Tasks', 'Projects'));
 
 
