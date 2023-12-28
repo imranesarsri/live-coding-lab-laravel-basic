@@ -2,7 +2,9 @@
     <tr>
         <td>{{ $Task->name }}</td>
         <td>{{ $Task->project->name }}</td>
-        <td>{{ $Task->description }}</td>
+
+        <td>{{ Str::limit($Task->description, 30) }} <a href="{{ route('show',  d) }}">read more...</a></td>
+
         <td class="d-flex">
             <a href="{{ route('edit', ['task' => $Task->id]) }}" class="btn btn-sm btn-default mx-2">
                 <i class="fa-solid fa-pen-to-square"></i>
