@@ -80,7 +80,6 @@ class TaskController extends Controller
     public function show(Task $task)
     {
         $Projects = Project::all();
-
         return view('Tasks.show', compact('task', 'Projects'));
     }
 
