@@ -3,9 +3,12 @@
         <td>{{ $Task->name }}</td>
         <td>{{ $Task->project->name }}</td>
 
-        <td>{{ Str::limit($Task->description, 30) }} <a href="{{ route('show', $Task->id) }}">read more...</a></td>
+        <td>{{ $Task->description }}</td>
 
         <td class="d-flex">
+            <a href="{{ route('show', $Task->id) }}" class="btn btn-sm btn-default">
+                <i class="fa-solid fa-eye"></i>
+            </a>
             <a href="{{ route('edit', ['task' => $Task->id]) }}" class="btn btn-sm btn-default mx-2">
                 <i class="fa-solid fa-pen-to-square"></i>
             </a>

@@ -94,7 +94,8 @@
         $(document).ready(function() {
             function fetchData(page, searchTaskValue, selectProjrctValue) {
                 $.ajax({
-                    url: '/?page=' + page + '&searchTaskValue=' + searchTaskValue + '&selectProjrctValue=' +
+                    url: 'tâches/?page=' + page + '&searchTaskValue=' + searchTaskValue +
+                        '&selectProjrctValue=' +
                         selectProjrctValue,
                     success: function(data) {
                         $('tbody').html('');

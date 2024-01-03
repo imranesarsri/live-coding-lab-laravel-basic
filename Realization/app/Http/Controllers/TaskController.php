@@ -62,7 +62,7 @@ class TaskController extends Controller
     {
         // dd($request->validated());
         Task::create($request->validated());
-        return redirect('/')->with('success', 'Tâche créée avec succès !');
+        return redirect('/tâches')->with('success', 'Tâche créée avec succès !');
 
     }
 
@@ -91,7 +91,7 @@ class TaskController extends Controller
     {
         // dd($task);
         $task->update($request->validated());
-        return redirect('/')->with('success', 'Tâche mise à jour avec succès !');
+        return redirect('/tâches')->with('success', 'Tâche mise à jour avec succès !');
     }
 
     /**
@@ -100,6 +100,6 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect('/')->with('success', 'Tâche supprimée avec succès !');
+        return redirect('/tâches')->with('success', 'Tâche supprimée avec succès !');
     }
 }

@@ -1,4 +1,4 @@
-@extends('../Layouts.Layout')
+@extends('Layouts.Layout')
 @section('content')
     <div class="content-header">
     </div>
@@ -9,7 +9,7 @@
 
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Edit Tâche </h3>
+                            <h3 class="card-title">Modify Une Tâche </h3>
                         </div>
                         <form action="{{ route('update', ['task' => $task->id]) }}" method="post">
                             @csrf
@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="card-footer">
-                                <a href="{{ route('index') }}" class="btn btn-default">annuler</a>
+                                <a href="{{ route('index') }}" class="btn btn-default">Annuler</a>
                                 <button type="submit" class="btn btn-primary">update</button>
                             </div>
                         </form>

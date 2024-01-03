@@ -9,10 +9,7 @@
             </tr>
         </thead>
         <tbody>
-
-
             @include('Tasks.Search')
-
         </tbody>
         <input type="hidden" id='page' value="1">
     </table>
